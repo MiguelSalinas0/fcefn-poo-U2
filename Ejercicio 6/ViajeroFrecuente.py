@@ -23,9 +23,9 @@ class ViajeroFrecuente:
     
     def __gt__(self, otro):
         if(self.__millasAcum > otro.__millasAcum):
-            return True
-        else:
             return False
+        else:
+            return True
     
     def __add__(self, millas):
         self.__millasAcum += millas

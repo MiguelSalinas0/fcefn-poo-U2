@@ -44,15 +44,26 @@ class ManejadorViajeroFrecuente:
         archivo.close()
     
     def ordenarLista(self):
-        self.__listaViajeros.sort(reverse=True)
-        return self.__listaViajeros
+        lenght = len(self.__listaViajeros)-1
+        for i in range(0,lenght):
+            for j in range(0,lenght):
+                if self.__listaViajeros[j] > self.__listaViajeros[j+1]:
+                    aux = self.__listaViajeros[j]
+                    self.__listaViajeros[j] = self.__listaViajeros[j+1]
+                    self.__listaViajeros[j+1] = aux
     
     def sumarMillas(self, viajero, millas):
         viaj = self.buscarViajero(viajero)
-        self.__listaViajeros[viaj] + millas
-        print('Millas totales: {}'.format(self.__listaViajeros[viaj].cantidadTotaldeMillas()))
+        if(viaj == None):
+            print('ERROR: No se encontró el viajero')
+        else:
+            self.__listaViajeros[viaj] + millas
+            print('Millas totales: {}'.format(self.__listaViajeros[viaj].cantidadTotaldeMillas()))
         
     def restarMillas(self, viajero, millas):
         viaj = self.buscarViajero(viajero)
-        self.__listaViajeros[viaj] - millas
-        print('Millas totales: {}'.format(self.__listaViajeros[viaj].cantidadTotaldeMillas()))
+        if(viaj == None):
+            print('ERROR: No se encontró el viajero')
+        else:
+            self.__listaViajeros[viaj] - millas
+            print('Millas totales: {}'.format(self.__listaViajeros[viaj].cantidadTotaldeMillas()))
